@@ -9,29 +9,45 @@ abstract class Vendedor {
 
   // Definimos el método abstracto.
   // Como no vamos a implementarlo acá, es necesario explicitar qué devuelve.
+  // Devuelve un valor booleano
+  // Parametros :
+  // ciudad : de tipo Ciudad
   abstract fun puedeTrabajarEn(ciudad: Ciudad): Boolean
 
   // En las funciones declaradas con = no es necesario explicitar el tipo
+  // Devuelve un valor booleano
   fun esVersatil() =
     certificaciones.size >= 3
       && this.certificacionesDeProducto() >= 1
       && this.otrasCertificaciones() >= 1
 
   // Si el tipo no está declarado y la función no devuelve nada, se asume Unit (es decir, vacío)
+  // No devuelve nada
+  // Parametros :
+  // certificacion : de tipo Certificacion
   fun agregarCertificacion(certificacion: Certificacion) {
     certificaciones.add(certificacion)
   }
 
+  // Devuelve un valor Booleano
   fun esFirme() = this.puntajeCertificaciones() >= 30
 
+  // Devuelve un numero entero
   fun certificacionesDeProducto() = certificaciones.count { it.esDeProducto }
+  // Devuelve un numero entero
   fun otrasCertificaciones() = certificaciones.count { !it.esDeProducto }
-
+  // Devuelve un numero entero
   fun puntajeCertificaciones() = certificaciones.sumBy { c -> c.puntaje }
 }
 
 // En los parámetros, es obligatorio poner el tipo
+// Devuelve un valor booleano
+// Parametros :
+// ciudadDeOrigen : de tipo Ciudad
 class VendedorFijo(val ciudadOrigen: Ciudad) : Vendedor() {
+  //Devuelve un booleano
+  // Parametros :
+  // ciudad : de tipo Ciudad
   override fun puedeTrabajarEn(ciudad: Ciudad): Boolean {
     return ciudad == ciudadOrigen
   }
@@ -39,12 +55,18 @@ class VendedorFijo(val ciudadOrigen: Ciudad) : Vendedor() {
 
 // A este tipo de List no se le pueden agregar elementos una vez definida
 class Viajante(val provinciasHabilitadas: List<Provincia>) : Vendedor() {
+  // Devuelve un valor booleano
+  // Parametros :
+  // ciudad : de tipo Ciudad
   override fun puedeTrabajarEn(ciudad: Ciudad): Boolean {
     return provinciasHabilitadas.contains(ciudad.provincia)
   }
 }
 
 class ComercioCorresponsal(val ciudades: List<Ciudad>) : Vendedor() {
+  //Devuelve un valor booleano
+  // Parametros :
+  // ciudad : de tipo Ciudad
   override fun puedeTrabajarEn(ciudad: Ciudad): Boolean {
     return ciudades.contains(ciudad)
   }
