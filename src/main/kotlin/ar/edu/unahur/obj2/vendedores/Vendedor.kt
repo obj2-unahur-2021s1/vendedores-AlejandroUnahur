@@ -40,6 +40,8 @@ abstract class Vendedor {
   fun puntajeCertificaciones() = certificaciones.sumBy { c -> c.puntaje }
 
   abstract fun esInfluyente(): Boolean
+
+  fun esGenerico() = this.otrasCertificaciones() >= 1
 }
 
 // En los parámetros, es obligatorio poner el tipo

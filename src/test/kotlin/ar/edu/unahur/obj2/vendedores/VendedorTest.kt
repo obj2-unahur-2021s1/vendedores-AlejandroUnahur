@@ -8,15 +8,9 @@ class VendedorTest : DescribeSpec({
   val misiones = Provincia(1300000)
   val cordoba = Provincia(2000000)
   val jujuy = Provincia(718971)
-  val tucuman = Provincia(1593000)
-  val buenosAires = Provincia(10000000)
-  val caimancito = Ciudad(jujuy)
-  val tumbaya = Ciudad(jujuy)
-  val humahuaca = Ciudad(jujuy)
   val sanIgnacio = Ciudad(misiones)
-  val posadas = Ciudad(misiones)
-  val candelaria = Ciudad(misiones)
-  val manantial = Ciudad(tucuman)
+  val buenosAires = Provincia(10000000)
+
 
   describe("Vendedor fijo") {
     val obera = Ciudad(misiones)
@@ -57,6 +51,13 @@ class VendedorTest : DescribeSpec({
   }
 
   describe("Comercio corresponsal") {
+    val tucuman = Provincia(1593000)
+    val caimancito = Ciudad(jujuy)
+    val tumbaya = Ciudad(jujuy)
+    val humahuaca = Ciudad(jujuy)
+    val posadas = Ciudad(misiones)
+    val candelaria = Ciudad(misiones)
+    val manantial = Ciudad(tucuman)
     val comercio = ComercioCorresponsal(listOf(caimancito,posadas,humahuaca,posadas,candelaria,manantial))
     val comercio2 = ComercioCorresponsal(listOf(caimancito,posadas,humahuaca,candelaria))
     describe("PuedeTrabajarEn") {
