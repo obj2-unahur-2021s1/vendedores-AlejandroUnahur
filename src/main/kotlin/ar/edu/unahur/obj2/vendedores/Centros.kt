@@ -9,9 +9,7 @@ class Centro(ciudad: Ciudad) {
         if (this.vendedores.contains(vendedor)) {
             throw Exception("Este vendedor ya trabaja en el centro de distribucion")
         }
-        else {
-            this.vendedores.add(vendedor)
-        }
+        this.vendedores.add(vendedor)
     }
 
     fun vendedorEstrella() = this.vendedores.maxBy { it.puntajeCertificaciones() }
