@@ -18,8 +18,6 @@ class Centro(ciudad: Ciudad) {
 
     fun vendedoresGenericos() = this.vendedores.filter { it.esGenerico() }
 
-    fun esRobusto() = this.vendedoresFirmes().size >= 3
-
-    fun vendedoresFirmes() = this.vendedores.filter { it.esFirme() }
+    fun esRobusto() = this.vendedores.count { it.esFirme() } >= 3
 
 }
