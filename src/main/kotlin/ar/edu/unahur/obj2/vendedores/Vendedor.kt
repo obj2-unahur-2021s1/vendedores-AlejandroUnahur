@@ -81,10 +81,7 @@ class ComercioCorresponsal(val ciudades: List<Ciudad>) : Vendedor() {
     return ciudades.contains(ciudad)
   }
 
-  override fun esInfluyente() = ciudades.size >= 5 || this.tieneProvinciasConSucursales()
-
-  fun tieneProvinciasConSucursales() = this.provincias().size >= 3
-
-  fun provincias() = ciudades.map { it.provincia }.toSet()
+  override fun esInfluyente() = ciudades.size >= 5 || this.provinciasConSucursales().size >= 3
+  fun provinciasConSucursales() = ciudades.map { it.provincia }.toSet()
 
 }
